@@ -1,0 +1,44 @@
+foxxy-update-manager (3.3+foxxy9) testing; urgency=medium
+
+  * Fix icons path
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@foxxysec.org>  Sun, 18 Dec 2016 20:56:38 +0100
+
+foxxy-update-manager (3.2+foxxy1) testing; urgency=medium
+
+  * Fix launcher disappearing from menu
+  * Rename paths from update-manager to upgrade-manager
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@foxxysec.org>  Tue, 13 Dec 2016 12:46:38 +0100
+
+foxxy-update-manager (3.2+foxxy0) testing; urgency=medium
+
+  * Update mirrors list
+  * Update package structure
+
+ -- Lisetta "Sheireen" Ferrero <sheireen@foxxysec.org>  Sun, 11 Dec 2016 18:22:15 +0300
+
+foxxy-update-manager (3.1+foxxy0) testing; urgency=medium
+
+  * Add TUNA mirror
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@foxxysec.org>  Sun, 28 Aug 2016 18:28:00 +0200
+
+foxxy-update-manager (3.0+foxxy2) testing; urgency=medium
+
+  * Add cloudflare support
+
+ -- Lorenzo "Palinuro" Faletra <eclipse@foxxysec.org>  Wed, 15 Jun 2016 19:19:05 +0200
+
+foxxy-update-manager (3.0+foxxy1) testing; urgency=medium
+
+  * Add taiwan (NCHC) and ireland (heanet) mirrors
+  * Change mirrors layout
+
+ -- Lorenzo "Palinuro" Faletra <eclipse@foxxysec.org>  Mon, 23 May 2016 18:29:19 +0200
+
+foxxy-update-manager (3.0+foxxy0) testing; urgency=medium
+
+  * Debianize source
+
+ -- Lorenzo "Palinuro" Faletra <eclipse@foxxysec.org>  Sat, 21 May 2016 20:20:59 +0200

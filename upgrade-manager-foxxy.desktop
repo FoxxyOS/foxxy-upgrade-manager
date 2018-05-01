@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=foxxy-upgrade
+Name=Foxxy Upgrade manager
+Comment=Simple system upgrade manager for Foxxy Security OS
+Icon=/usr/share/foxxy-update-manager/icons/foxxy-upgrade.svg
+Categories=System;Settings;Core;Utility
+

@@ -1,0 +1,19 @@
+Source: foxxy-update-manager
+Section: foxxy
+Priority: optional
+Maintainer: Foxxy Dev Team <foxxy-devel@lists.foxxysec.org>
+Uploaders: Lorenzo "Palinuro" Faletra <palinuro@frozenbox.org>,
+           Lisetta "Sheireen" Ferrero <sheireen@frozenbox.org>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+Build-Depends-Indep: pkg-config
+Homepage: http://www.foxxysec.org/
+
+
+Package: foxxy-update-manager
+Architecture: all
+Depends: gtkd | gtkdialog, apt-foxxy
+Section: foxxy
+Priority: optional
+Description: A simple APT update manager frontend for Foxxy OS
+ A simple APT update manager frontend for Foxxy OS

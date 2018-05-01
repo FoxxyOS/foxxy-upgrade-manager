@@ -1,0 +1,115 @@
+#!/bin/bash
+#
+# this software depends on gtkdialog which is deprecated
+#
+
+prog="Foxxy Upgrade Manager"
+Encoding=UTF-8
+[ -z $GTKDIALOG ] && GTKDIALOG=gtkdialog
+	MAIN_DIALOG='
+<window window_position="1" title="Foxxy Update Manager" resizable="true"  image-name="/usr/share/foxxy-upgrade-manager/icons/icon.svg">
+        <vbox>
+				<frame>
+					<pixmap>
+						<input file>/usr/share/foxxy-upgrade-manager/icons/foxxy-upgrade.svg</input>
+					</pixmap>
+				</frame>
+				<frame Mirror Selector>
+					<vbox space-fill="true">
+						<combobox>	 
+							<variable>mirror</variable> 
+
+<item>0    - Global Distributed CDN - Cloudflare</item>
+<item>1    - North America   -  Massachussetts -   1 Gbps   -   SIPB MIT</item>
+<item>2    - North America   -   California    -   1 Gbps   -   Berkeley</item>
+<item>3    - North America   -    Virginia     -   1 Gbps   -   JMU</item>
+<item>4    - North America   -    New York     -   1 Gbps   -   Clarkson</item>
+<item>5    - South America   -     Ecuador     - 100 Mbps   -   CEDIA</item>
+<item>6    - South America   -     Ecuador     - 100 Mbps   -   UTA</item>
+<item>7    - South America   -     Ecuador     - 100 Mbps   -   UEB</item>
+<item>8    -    Europe       -    Germany      -  20 Gbps   -  Halifax RWTH-Aachen</item>
+<item>9    -    Europe       -     Italy       -  10 Gbps   -  GARR Consortium</item>
+<item>10   -    Europe       -    Germany      -  10 Gbps   -  Esslingen University</item>
+<item>11   -    Europe       -   Netherlands   -  10 Gbps   -  Nluug</item>
+<item>12   -    Europe       -   Netherlands   -  10 Gbps   -  Babylon.network</item>
+<item>13   -    Europe       -     Sweden      -  10 Gbps   -  Umea University (ACC UMU)</item>
+<item>14   -    Europe       -    Ireland      -  10 Gbps   -  Heanet</item>
+<item>15   -    Europe       -     Poland      -  10 Gbps   -  Onet</item>
+<item>16   -    Europe       -     France      -  10 Gbps   -  Babylon.network</item>
+<item>17   -    Europe       - United Kingdom  -   1 Gbps   -  Warwick University</item>
+<item>18   -    Europe       -     Greece      -   1 Gbps   -  University of Crete</item>
+<item>19   -    Europe       -    Germany      -   1 Gbps   -  Dasaweb eu2</item>
+<item>20   -    Europe       -     France      - 250 Mbps   -  Dasaweb eu1</item>
+<item>21   -    Europe       -     France      - 250 Mbps   -  Frozenbox</item>
+<item>22   -     Asia        -    Taiwan       -  10 Gbps   -  NCHC</item>
+<item>23   -     Asia        -   Singapore     -  10 Gbps   -  0x</item>
+<item>24   -     Asia        -     China       -   2 Gbps   -  TUNA Tsinghua</item>
+<item>25   -     Asia        -     China       -   1 Gbps   -  USTC</item>
+<item>26   -     Asia        -    Russia       -   1 Gbps   -  Yandex</item>
+<item>27   -     Asia        -   Bangladesh    -   1 Gbps   -  Amberit (Dhakacom)</item>
+<item>28   -   Oceania       -  New Caledonia  -   1 Gbps   -  Lagoon</item>
+<item>29   -  Middle East    -     Iran        -   1 Gbps   -  ASIS</item>
+
+						</combobox>
+						<hbox>
+						<button> 
+							<label>Select as standard mirror</label> 
+							<action>menuexecg foxxy-mirror-selector $(echo $mirror | head -n1 | grep -o "^\w*\b") foxxy nonfree</action> 
+						</button>
+						<button> 
+							<label>Select as foxxy-libre mirror</label> 
+							<action>menuexecg foxxy-mirror-selector $(echo $mirror | head -n1 | grep -o "^\w*\b") foxxy free</action> 
+						</button>
+						<button> 
+							<label>Select as testing mirror</label> 
+							<action>menuexecg foxxy-mirror-selector $(echo $mirror | head -n1 | grep -o "^\w*\b") testing nonfree</action> 
+						</button>
+						</hbox>
+		    		</vbox>
+		    	</frame>
+		<frame Wizard>
+			<hbox>
+				<button>
+       				<input file>/usr/share/foxxy-upgrade-manager/icons/icon.svg</input>
+					<width>180</width>
+					<height>60</height>
+					<label>.                                          Automatic System Upgrade                                      </label>
+          			<action>gksu "mate-terminal -x /usr/share/foxxy-upgrade-manager/full-upgrade.sh" &</action>
+        		</button>
+			</hbox>
+		</frame>  							   
+		<frame Manual Update>
+			<hbox>
+		 		<button>
+       				<input file>/usr/share/foxxy-upgrade-manager/icons/update.svg</input>
+					<height>60</height>
+					<label>      Check for Updates                      </label>
+          			<action>gksu "mate-terminal -x apt-get update" &</action>
+        		</button>
+        		<vbox>
+		  		<button>
+       				<input file>/usr/share/foxxy-upgrade-manager/icons/upgrade.png</input>
+					<width>30</width>
+					<label>             Partial Upgrade                               </label>
+          			<action>gksu "mate-terminal -x apt-get upgrade" &</action>
+        		</button>
+        		<button>
+       				<input file>/usr/share/foxxy-upgrade-manager/icons/dist-upgrade.png</input>
+					<width>30</width>
+					<label>             Complete Upgrade                              </label>
+          			<action>gksu "mate-terminal -x apt-get dist-upgrade" &</action>
+        		</button>
+        		</vbox>    
+			</hbox>
+		</frame>
+	 </vbox>
+</window>
+'
+
+
+export MAIN_DIALOG
+
+case $1 in
+	-d | --dump) echo "$MAIN_DIALOG" ;;
+	*) $GTKDIALOG --program=MAIN_DIALOG ;;
+esac
